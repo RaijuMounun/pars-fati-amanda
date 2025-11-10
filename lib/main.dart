@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         return cubit;
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Güzelime',
         theme: ThemeData(
           primarySwatch: Colors.pink,

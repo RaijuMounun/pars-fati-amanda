@@ -46,9 +46,26 @@ class RomanticCubit extends Cubit<RomanticState> {
             headerText: 'Yükleniyor...',
           ),
           isLoading: false,
+          isMusicPlaying: false,
         ),
       ) {
-    musicPlayerService.loadAsset('audio/somethingholy.mp3');
+    _initializeAudio();
+  }
+
+  /// Müziği yükler ve bittiğinde otomatik olarak başlatır.
+  Future<void> _initializeAudio() async {
+    // 1. Dosyayı yükle (I/O)
+    await musicPlayerService.loadAsset('audio/somethingholy.mp3');
+
+    // 2. Yükleme bittiyse, oynatmayı başlat
+    await musicPlayerService.startMusic();
+
+    // 3. UI'ı (State'i) güncelle.
+    // Artık müzik çaldığı için AppBar'daki ikonun güncellenmesi gerekir.
+    if (state.isMusicPlaying == false) {
+      // Sadece kapalıysa aç
+      emit(state.copyWith(isMusicPlaying: true));
+    }
   }
 
   // Başlangıç verisini yükleme (index = 0)
@@ -78,7 +95,7 @@ class RomanticCubit extends Cubit<RomanticState> {
 
   // Müzik başlatma/durdurma mantığı
   void toggleMusic() async {
-    final bool currentlyPlaying = await musicPlayerService.isPlaying();
+    final bool currentlyPlaying = state.isMusicPlaying;
 
     if (currentlyPlaying) {
       await musicPlayerService.pauseMusic();

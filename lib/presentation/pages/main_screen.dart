@@ -95,18 +95,15 @@ class MainScreen extends StatelessWidget {
 
             const SizedBox(height: 50),
 
-            const SizedBox(height: 50),
-
             // Buton (Ana Etkileşim)
             ElevatedButton(
               onPressed: () {
-                // KRİTİK DÜZELTME:
-                // Eğer mevcut state'in index'i 999 (son adım) ise:
+                // Eğer son adım (999) ise:
                 if (state.currentStep.stepIndex == 999) {
-                  _showFinalMessage(context);
+                  _showFinalMessage(context); // Pop-up'ı göster
                 } else {
-                  // Son adımda değilsek, normal şekilde sonraki adıma geç.
-                  cubit.goToNextStep();
+                  // Son adım değilse:
+                  cubit.goToNextStep(); // Sonraki adıma geç
                 }
               },
               child: Text(state.currentStep.buttonText),
@@ -122,11 +119,26 @@ class MainScreen extends StatelessWidget {
     // Resimlerinizi pubspec.yaml'de tanımladığınızdan emin olun.
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
-      child: Image.asset(
-        imagePath,
+      child: FadeInImage(
+        // Bu, eklediğimiz 'transparent_image' paketinden gelir.
+        // Resim yüklenirken 350px yükseklikte şeffaf bir yer tutucu gösterir.
+        placeholder: MemoryImage(kTransparentImage),
+
+        // Yüklenecek asıl resim (AssetImage provider'ı ile)
+        image: AssetImage(imagePath),
+
+        // Resmin nasıl sığacağı
+        fit: BoxFit.cover,
         width: double.infinity,
         height: 350,
-        fit: BoxFit.cover,
+
+        // Animasyon hızları
+        fadeOutDuration: const Duration(
+          milliseconds: 200,
+        ), // Placeholder'ın kaybolma hızı
+        fadeInDuration: const Duration(
+          milliseconds: 400,
+        ), // Yeni resmin belirme hızı
       ),
     );
   }
@@ -152,7 +164,7 @@ class MainScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Feyza ben senin canın mıyım yoksa yok mu? /n Emir ver ama git falan gibi olmasın olur mu? /n Yine elimi tut yüzümü sev, öp /n Zaten, sevdikçe aşılmaz sorun yok /n ama yine de bana bomba atma olur mu?',
+                'Feyza ben senin canın mıyım yoksa yok mu?\nEmir ver ama git falan gibi olmasın olur mu?\nYine elimi tut yüzümü sev, öp\nZaten, sevdikçe aşılmaz sorun yok\nAma yine de bana bomba atma olur mu?',
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
@@ -162,7 +174,7 @@ class MainScreen extends StatelessWidget {
           actions: [
             TextButton(
               child: const Text(
-                'Hep Seninleyim',
+                '💖💖',
                 style: TextStyle(color: Colors.pink, fontSize: 16),
               ),
               onPressed: () {
