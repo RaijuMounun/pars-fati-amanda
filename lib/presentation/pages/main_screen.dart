@@ -144,7 +144,7 @@ class MainScreen extends StatelessWidget {
             side: const BorderSide(color: Colors.pinkAccent, width: 3),
           ),
           title: const Text(
-            '💖 Sonsuza Kadar Benimle Misin? 💖',
+            '💖💖',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold),
           ),
@@ -152,7 +152,7 @@ class MainScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Farkına vardım, şükür, göçmeden Feyza /n Ellerinle sarıp beni, gölgemden şerden /n Yarın da kurtar beni, yoksa yok mu Feyza? /n ',
+                'Feyza ben senin canın mıyım yoksa yok mu? /n Emir ver ama git falan gibi olmasın olur mu? /n Yine elimi tut yüzümü sev, öp /n Zaten, sevdikçe aşılmaz sorun yok /n ama yine de bana bomba atma olur mu?',
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
