@@ -39,6 +39,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   # audioplayers: ^5.2.1 # Müzik çalmak için
   just_audio: ^0.9.36
+  transparent_image: ^2.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
