@@ -152,7 +152,7 @@ class MainScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Farkına vardım, şükür, göçmeden Feyza /n Ellerinle sarıp yüzümü, gölgeden şerden /n Yarın da kurtar ben',
+                'Farkına vardım, şükür, göçmeden Feyza /n Ellerinle sarıp beni, gölgemden şerden /n Yarın da kurtar beni, yoksa yok mu Feyza? /n ',
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
